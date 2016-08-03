@@ -1,0 +1,11 @@
+<ion-view view-title="Encatman">
+  <ion-content>
+    <div class="list">
+      <a class="item item-thumbnail-left" href="#/votar/{{enquete.id}}" ng-repeat="enquete in enquetes.values">
+        <img ng-src="{{enquete.urlImagem}}">
+        <h2>{{enquete.titulo}}</h2>
+        <p>{{enquete.texto}}</p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>
