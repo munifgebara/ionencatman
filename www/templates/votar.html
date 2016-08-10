@@ -1,6 +1,16 @@
 <ion-view view-title="Votar">
   <ion-content>
-    Votar
+    <div class="card">
+      <h2>{{enquete.titulo}}</h2>
+      <div class="item item-text-wrap">
+        {{enquete.texto}}
+      </div>
+    </div>
   </div>
+
+  <button class="button button-block button-balanced" ng-repeat="coisa in enquete.opcoes" ng-click="responde(enquete.id,coisa.id)">
+    {{coisa.texto}}
+  </button>
+
 </ion-content>
 </ion-view>

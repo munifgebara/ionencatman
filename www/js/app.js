@@ -18,15 +18,25 @@ aplicativo.config(function($stateProvider, $urlRouterProvider) {
 });
 
 aplicativo.controller('ListaCtrl', function($http, $scope) {
-  $scope.enquetes=[{"nome":"valor"}];
+  $scope.enquetes=[];
   $http.get('https://munif.com.br/encatman-api/api/enquete?gumgaToken=fafiman')
   .success(function(response) {
     $scope.enquetes=response;
   });
 });
 
-aplicativo.controller('VotaCtrl', function($http, $scope) {
-  $scope.enquete=[{"titulo":"valor","texto":"alguma coisa"}];
+aplicativo.controller('VotaCtrl', function($http, $scope, $state, $stateParams) {
+  $scope.enquete={};
+  id=$stateParams.enqueteId;
+  $http.get('https://munif.com.br/encatman-api/api/enquete/'+id+'?gumgaToken=fafiman')
+  .success(function(response) {
+    $scope.enquete=response;
+  });
+  $scope.responde=function(enqueteId,respostaId){
+    console.log(enqueteId,respostaId);
+    //http://munif.com.br/encatman-api/api/resposta
+  }
+
 });
 
 
