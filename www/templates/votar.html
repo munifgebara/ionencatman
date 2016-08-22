@@ -8,9 +8,9 @@
     </div>
   </div>
 
-  <button class="button button-block button-balanced" ng-repeat="coisa in enquete.opcoes" ng-click="responde(enquete.id,coisa.id)">
+  <button ng-hide="votou" class="button button-block button-balanced" ng-repeat="coisa in enquete.opcoes" ng-click="responde(coisa)">
     {{coisa.texto}}
   </button>
-
+  {{status}}
 </ion-content>
 </ion-view>
