@@ -2,9 +2,13 @@
   <ion-content>
     <div class="list">
       <a class="item item-thumbnail-left" href="#/votar/{{enquete.id}}" ng-repeat="enquete in enquetes.values">
-        <img ng-src="{{enquete.urlImagem}}">
+        <img ng-src="{{enquete.urlImagem}}"> </img>
         <h2>{{enquete.titulo}}</h2>
         <p>{{enquete.texto}}</p>
+
+      </a>
+      <a>
+        <button class=" button button-dark  button-block icon-left  " ng-click="vaiParaCriar()">Criar</button>
       </a>
     </div>
   </ion-content>

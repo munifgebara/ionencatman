@@ -1,0 +1,32 @@
+<ion-view view-title="Criar">
+  <ion-content>
+    <div class="list card">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Titulo da Enquete</span>
+        <input value="" type="text" placeholder="Digite o titulo da enquete" ngmodel="titulo"></imput>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Texto</span>
+        <input value="" type="text" placeholder="Digite o Texto da enquete" ngmodel="texto"</input>
+      </label>
+        <label class="item item-input item-stacked-label">
+        <br>
+       <span class="input-label">Opções</span>
+       </label>
+      <div class="item item-button-left" >
+        <input value="" type="text" placeholder="Digite a opção" ng-model="itemName">
+        <button class="button button" ng-click="addItem(itemName)"><i class="icon ion-plus"></i> </button>
+      </div>
+      </label>
+      <table>
+        <tr ng-repeat="item in items" class="item-unchecked,">
+          <td>
+            <b><button class="button button" ng-click="removeItem($index)"> <i class="icon ion-minus-circled"></i> </button></b>{{item.name}}
+          </td>
+        </tr>
+      </table>
+
+      <button class=" button button-dark  button-block icon-left  " ng-click="addEnquete">Confirmar</button>
+    </div>
+  </ion-content>
+</ion-view>
