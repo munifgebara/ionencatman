@@ -4,8 +4,8 @@ var aplicativo=angular.module('encatman', ['ionic']);
 aplicativo.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $httpProvider.defaults.headers.common = {
-          'gumgaToken': 'fafiman'
-        };
+    'gumgaToken': 'fafiman'
+  };
 
   $stateProvider.state('list', {
     url: '/list',
@@ -31,7 +31,7 @@ aplicativo.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
 aplicativo.controller('ListaCtrl', function($http, $scope, $state) {
   $scope.vaiParaCriar = function() {
-     $state.go('criar');
+    $state.go('criar');
   };
 
   $scope.enquetes=[];
@@ -42,24 +42,47 @@ aplicativo.controller('ListaCtrl', function($http, $scope, $state) {
 
 });
 
-aplicativo.controller('CriarCtrl', function ($scope, $state) {
-  $scope.status="Não Criou";
-  $scope.Criou=false;
-  $scope.titulo;
-  $scope.texto;
-  $scope.name="";
+aplicativo.controller('CriarCtrl', function ($scope, $state,$http) {
+  $scope.titulo="Nova Enquete";
+  $scope.texto="Texto";
   $scope.items = [];
+  $scope.itemName="";
   $scope.addItem = function (itemName) {
     $scope.items.push({
-      name: itemName
+      texto: itemName
     });
-    $scope.itemName = "";
+    $scope.itemName="";
   };
   $scope.removeItem = function (index) {
     $scope.items.splice(index, 1);
- };
+  };
+
+  $scope.addEnquete = function(){
+    console.log("ENVIANDO");
+    var enquete={
+      urlImagem:'http://www.prefeiturateotonio.com.br/userfiles/conteudos/image/iptu/enquete.jpg',
+      titulo: $scope.titulo,
+      texto: $scope.texto,
+      opcoes: $scope.items
+    };
+    console.log(enquete);
 
 
+    $http.post('https://munif.com.br/encatman-api/api/enquete',enquete)
+    .then(function(response) {
+      console.log("OK");
+      console.log(response);
+      $state.go('list');
+    },
+    function(response) {
+      console.log("ERROR");
+      console.log(response);
+    });
+
+
+
+
+  }
 });
 
 
